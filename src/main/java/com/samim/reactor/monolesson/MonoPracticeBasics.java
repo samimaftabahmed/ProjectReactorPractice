@@ -39,11 +39,8 @@ public class MonoPracticeBasics {
                 s -> {
                     int value = 7 / 0;
                 },
-                err -> {
-                    System.out.println("Exception: " + err.getMessage());
-                    System.err.println("Exception: " + err.getMessage());
-                },
-                () -> System.out.println("Mono Completed")
+                err -> System.out.println("3_2 Exception: " + err.getMessage()),
+                () -> System.out.println("Mono Completed") // Executes after consumer error
         );
     }
 
@@ -58,8 +55,8 @@ public class MonoPracticeBasics {
                 .map(integer -> integer / 0);
         mono.subscribe(
                 s -> System.out.println(s),
-                err -> System.out.println("Exception: " + err.getMessage()),
-                () -> System.out.println("Mono Completed")
+                err -> System.out.println("3_3 Exception: " + err.getMessage()),
+                () -> System.out.println("Mono Completed") // Does not execute
         );
     }
 }
