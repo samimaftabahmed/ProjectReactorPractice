@@ -47,4 +47,19 @@ public class MonoPracticeBasics {
         );
     }
 
+    /**
+     * Mono with exception
+     */
+    public void lesson3_3() {
+        System.out.println("\n-- Lesson 3.3 --");
+
+        Mono<Integer> mono = Mono.just("ball")
+                .map(s -> s.length())
+                .map(integer -> integer / 0);
+        mono.subscribe(
+                s -> System.out.println(s),
+                err -> System.out.println("Exception: " + err.getMessage()),
+                () -> System.out.println("Mono Completed")
+        );
+    }
 }
