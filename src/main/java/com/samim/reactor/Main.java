@@ -1,6 +1,6 @@
-package org.example;
+package com.samim.reactor;
 
-import org.example.monolesson.MonoPracticeBasics;
+import com.samim.reactor.monolesson.MonoPracticeBasics;
 
 public class Main {
 
