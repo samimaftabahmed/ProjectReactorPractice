@@ -5,10 +5,18 @@ import reactor.core.publisher.Mono;
 
 public class MonoPracticeBasics {
 
+    public static void main(String[] args) {
+        lesson2();
+        lesson3_1();
+        lesson3_2();
+        lesson3_3();
+        lesson3_4();
+    }
+
     /**
      * Simple Mono
      */
-    public void lesson2() {
+    public static void lesson2() {
         System.out.println("-- Lesson 2 --");
 
         Mono<Integer> mono = Mono.just(1);
@@ -18,7 +26,7 @@ public class MonoPracticeBasics {
     /**
      * Mono with proper syntax
      */
-    public void lesson3_1() {
+    public static void lesson3_1() {
         System.out.println("\n-- Lesson 3.1 --");
 
         Mono<String> mono2 = Mono.just("ball");
@@ -32,7 +40,7 @@ public class MonoPracticeBasics {
     /**
      * Mono with exception
      */
-    public void lesson3_2() {
+    public static void lesson3_2() {
         System.out.println("\n-- Lesson 3.2 --");
 
         Mono<String> mono3 = Mono.just("ball");
@@ -48,7 +56,7 @@ public class MonoPracticeBasics {
     /**
      * Mono with exception
      */
-    public void lesson3_3() {
+    public static void lesson3_3() {
         System.out.println("\n-- Lesson 3.3 --");
 
         Mono<Integer> mono = Mono.just("ball")
@@ -64,7 +72,7 @@ public class MonoPracticeBasics {
     /**
      * Mono with exception, with Helper methods
      */
-    public void lesson3_4() {
+    public static void lesson3_4() {
         System.out.println("\n-- Lesson 3.4 --");
 
         Mono<Integer> mono = Mono.just("ball")
