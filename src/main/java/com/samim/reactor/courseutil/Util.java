@@ -1,5 +1,7 @@
 package com.samim.reactor.courseutil;
 
+import com.github.javafaker.Faker;
+
 import java.util.function.Consumer;
 
 public class Util {
@@ -14,6 +16,10 @@ public class Util {
 
     public static Runnable onComplete() {
         return () -> System.out.println("Completed");
+    }
+
+    public static Faker faker() {
+        return Faker.instance();
     }
 
 }
