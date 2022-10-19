@@ -1,5 +1,6 @@
 package com.samim.reactor.monolesson;
 
+import com.samim.reactor.courseutil.Util;
 import reactor.core.publisher.Mono;
 
 public class MonoPracticeBasics {
@@ -58,5 +59,17 @@ public class MonoPracticeBasics {
                 err -> System.out.println("3_3 Exception: " + err.getMessage()),
                 () -> System.out.println("Mono Completed") // Does not execute
         );
+    }
+
+    /**
+     * Mono with exception, with Helper methods
+     */
+    public void lesson3_4() {
+        System.out.println("\n-- Lesson 3.4 --");
+
+        Mono<Integer> mono = Mono.just("ball")
+                .map(String::length)
+                .map(integer -> integer / 0);
+        mono.subscribe(Util.onNext(), Util.onError(), Util.onComplete());
     }
 }

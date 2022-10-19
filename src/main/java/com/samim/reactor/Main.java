@@ -10,5 +10,6 @@ public class Main {
         monoPracticeBasics.lesson3_1();
         monoPracticeBasics.lesson3_2();
         monoPracticeBasics.lesson3_3();
+        monoPracticeBasics.lesson3_4();
     }
 }
