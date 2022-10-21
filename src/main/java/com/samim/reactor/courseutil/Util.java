@@ -22,4 +22,8 @@ public class Util {
         return Faker.instance();
     }
 
+    public static String fullName() {
+        System.out.println("Generating full name...");
+        return faker().name().fullName();
+    }
 }
