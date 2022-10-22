@@ -26,4 +26,13 @@ public class Util {
         System.out.println("Generating full name...");
         return faker().name().fullName();
     }
+
+    public static void sleepSeconds(int seconds) {
+        System.out.println("Entered sleepSeconds");
+        try {
+            Thread.sleep(seconds * 1000L);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
