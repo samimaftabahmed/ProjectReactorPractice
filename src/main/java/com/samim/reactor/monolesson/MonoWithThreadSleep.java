@@ -21,6 +21,13 @@ public class MonoWithThreadSleep {
         monoName(); // mono doesn't execute as no subscriber
         Util.sleepSeconds(5); // blocked the main thread to view the result of no.4 execution.
         // If thread is not blocked then the program ends, since no.4 subscriber is executed in a different thread asynchronously.
+
+        System.out.println("6");
+        String name = monoName()
+                .subscribeOn(Schedulers.boundedElastic())
+                .block(); // blocks the thread and provides the result directly. block() itself creates a subscriber internally.
+        System.out.println(name);
+
     }
 
     private static Mono<String> monoName() {
