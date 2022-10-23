@@ -15,15 +15,15 @@ public class FileService {
 
     private final static String OUTPUT_DIR = "target/classes/files/";
 
-    public Mono<String> readMono(String filename) {
+    public Mono<String> readPublisher(String filename) {
         return Mono.fromSupplier(() -> readFile(filename));
     }
 
-    public Mono<Void> writeMono(String content, String filename) {
+    public Mono<Void> writePublisher(String content, String filename) {
         return Mono.fromRunnable(() -> writeFile(content, filename));
     }
 
-    public Mono<Void> deleteMono(String filename) {
+    public Mono<Void> deletePublisher(String filename) {
         return Mono.fromRunnable(() -> {
             Util.sleepSeconds(3); // sleeping, just to view the created file in explorer
             deleteFile(filename);
