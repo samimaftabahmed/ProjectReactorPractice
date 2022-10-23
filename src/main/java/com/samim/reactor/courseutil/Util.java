@@ -7,7 +7,7 @@ import java.util.function.Consumer;
 public class Util {
 
     public static Consumer<Object> onNext() {
-        return o -> System.out.println("Received: " + o);
+        return o -> System.out.println("Mono data: " + o);
     }
 
     public static Consumer<Throwable> onError() {
@@ -15,7 +15,7 @@ public class Util {
     }
 
     public static Runnable onComplete() {
-        return () -> System.out.println("Completed");
+        return () -> System.out.println("Mono Completed");
     }
 
     public static Faker faker() {
@@ -28,7 +28,7 @@ public class Util {
     }
 
     public static void sleepSeconds(int seconds) {
-        System.out.println("Entered sleepSeconds");
+        System.out.println("Sleeping Thread for " + seconds + " seconds");
         try {
             Thread.sleep(seconds * 1000L);
         } catch (InterruptedException e) {
