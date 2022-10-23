@@ -4,7 +4,7 @@ import com.samim.reactor.courseutil.Util;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 
-public class MonoWithThread {
+public class MonoWithThreadSleep {
 
     public static void main(String[] args) {
         System.out.println("1");
