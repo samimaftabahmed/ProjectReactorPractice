@@ -11,12 +11,12 @@ public class FileServiceExecutor {
 
     public static void main(String[] args) {
         String filename = UUID.randomUUID().toString().substring(0, 6) + ".xyz";
-        FileService service = new FileService();
-        service.readPublisher("random.txt")
+        FileServicePublishers fileService = new FileServicePublishers();
+        fileService.read("random.txt")
                 .subscribe(Util.onNext(), Util.onError(), Util.onComplete());
-        service.writePublisher("Something to write", filename)
+        fileService.write("Something to write", filename)
                 .subscribe(Util.onNext(), Util.onError(), Util.onComplete());
-        service.deletePublisher(filename)
+        fileService.delete(filename)
                 .subscribe(Util.onNext(), Util.onError(), Util.onComplete());
     }
 

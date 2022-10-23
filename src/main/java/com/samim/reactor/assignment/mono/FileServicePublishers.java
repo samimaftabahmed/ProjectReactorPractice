@@ -11,19 +11,19 @@ import java.nio.file.Paths;
 /**
  * Service that reads, writes and deletes files via Mono
  */
-public class FileService {
+public class FileServicePublishers {
 
     private final static String OUTPUT_DIR = "target/classes/files/";
 
-    public Mono<String> readPublisher(String filename) {
+    public Mono<String> read(String filename) {
         return Mono.fromSupplier(() -> readFile(filename));
     }
 
-    public Mono<Void> writePublisher(String content, String filename) {
+    public Mono<Void> write(String content, String filename) {
         return Mono.fromRunnable(() -> writeFile(content, filename));
     }
 
-    public Mono<Void> deletePublisher(String filename) {
+    public Mono<Void> delete(String filename) {
         return Mono.fromRunnable(() -> {
             Util.sleepSeconds(3); // sleeping, just to view the created file in explorer
             deleteFile(filename);
