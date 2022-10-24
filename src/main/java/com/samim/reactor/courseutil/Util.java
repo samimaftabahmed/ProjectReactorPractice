@@ -7,7 +7,7 @@ import java.util.function.Consumer;
 public class Util {
 
     public static Consumer<Object> onNext() {
-        return o -> System.out.println("Mono data: " + o);
+        return o -> System.out.println("Mono/Flux data: " + o);
     }
 
     public static Consumer<Throwable> onError() {
@@ -15,7 +15,7 @@ public class Util {
     }
 
     public static Runnable onComplete() {
-        return () -> System.out.println("Mono Completed");
+        return () -> System.out.println("Mono/Flux Completed");
     }
 
     public static Faker faker() {
