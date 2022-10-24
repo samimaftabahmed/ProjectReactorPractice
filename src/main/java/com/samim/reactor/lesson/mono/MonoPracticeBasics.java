@@ -1,4 +1,4 @@
-package com.samim.reactor.monolesson;
+package com.samim.reactor.lesson.mono;
 
 import com.samim.reactor.courseutil.Util;
 import reactor.core.publisher.Mono;
