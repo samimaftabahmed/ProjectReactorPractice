@@ -10,7 +10,7 @@ public class FluxBasics {
 
     public static void main(String[] args) {
         System.out.println("-- Flux.just --");
-        Flux.just(1, 2, 3, 4, "abc", Util.fullName())
+        Flux.just(1, 2, 3, 4, "abc", Util.fullName()) // Output flux: Flux<? extends Serializable>
                 .subscribe(Util.onNext(), Util.onError(), Util.onComplete());
 
         System.out.println("-- Flux.fromIterable --");
