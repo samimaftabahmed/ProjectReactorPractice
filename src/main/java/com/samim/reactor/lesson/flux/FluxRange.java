@@ -12,6 +12,8 @@ public class FluxRange {
         intRange2();
         System.out.println("\n---- stringRange() ----");
         stringRange();
+        System.out.println("\n---- logStringRange() ----");
+        logStringRange();
     }
 
     private static void intRange1() {
@@ -26,6 +28,13 @@ public class FluxRange {
 
     private static void stringRange() {
         Flux.range(3, 12)
+                .map(integer -> Util.fullName())
+                .subscribe(Util.onNext(), Util.onError(), Util.onComplete());
+    }
+
+    private static void logStringRange() {
+        Flux.range(3, 12)
+                .log()
                 .map(integer -> Util.fullName())
                 .subscribe(Util.onNext(), Util.onError(), Util.onComplete());
     }
