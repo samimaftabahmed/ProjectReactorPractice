@@ -3,6 +3,10 @@ package com.samim.reactor.lesson.flux;
 import com.samim.reactor.courseutil.Util;
 import reactor.core.publisher.Flux;
 
+/**
+ * Demonstration for the usage of Flux.range().
+ * Usage of Flux.range() is like using a for-loop
+ */
 public class FluxRange {
 
     public static void main(String[] args) {
