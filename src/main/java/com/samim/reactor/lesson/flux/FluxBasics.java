@@ -5,6 +5,7 @@ import reactor.core.publisher.Flux;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class FluxBasics {
 
@@ -22,5 +23,19 @@ public class FluxBasics {
         Integer[] arr = {1, 2, 8, 6};
         Flux.fromArray(arr)
                 .subscribe(Util.onNext(), Util.onError(), Util.onComplete());
+
+        System.out.println("-- Flux with empty and error --");
+        int count = ThreadLocalRandom.current().nextInt(1, 5);
+        userRepository(count)
+                .subscribe(Util.onNext(), Util.onError(), Util.onComplete());
+    }
+
+    private static Flux<String> userRepository(int userId) {
+        if (userId == 1) {
+            return Flux.just(Util.fullName());
+        } else if (userId == 2) {
+            return Flux.empty();
+        }
+        return Flux.error(new RuntimeException("Not in the allowed range"));
     }
 }
