@@ -25,10 +25,12 @@ public class FluxCreate {
         nameProducer.produce();
         nameProducer.produce();
         nameProducer.produce();
-        nameProducer.produce();
-        nameProducer.produce();
-        nameProducer.produce();
-        nameProducer.produce();
+
+        Runnable runnable = () -> nameProducer.produce();
+
+        for (int i = 0; i < 10; i++) {
+            new Thread(runnable).start();
+        }
 
     }
 }
