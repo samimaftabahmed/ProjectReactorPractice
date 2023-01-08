@@ -8,18 +8,13 @@ public class FluxCreate {
 
     public static void main(String[] args) {
 
-        System.out.println("-- Create Flux Directly");
-        Flux.create(fluxSink -> {
-                    String country;
-                    do {
-                        country = Util.faker().country().name();
-                        fluxSink.next(country);
-                    } while (!country.equalsIgnoreCase("canada"));
-                    fluxSink.complete();
-                })
-                .subscribe(Util.subscriber());
+        System.out.println("-- Create Flux Directly, Emit unbounded");
+        unBoundedEmitting();
 
-        System.out.println("-- Create Flux with Consumer FluxSink");
+        System.out.println("\n\n-- Create Flux Directly, Emit bounded by flux completeness");
+        boundedEmitting();
+
+        System.out.println("\n\n-- Create Flux with Consumer FluxSink");
         NameProducer nameProducer = new NameProducer();
         Flux.create(nameProducer).subscribe(Util.subscriber());
         nameProducer.produce();
@@ -32,5 +27,33 @@ public class FluxCreate {
             new Thread(runnable).start();
         }
 
+    }
+
+    private static void unBoundedEmitting(){
+        Flux.create(fluxSink -> {
+                    String country;
+                    do {
+                        country = Util.faker().country().name();
+                        System.out.println("emitting : " + country);
+                        fluxSink.next(country);
+                    } while (!country.equalsIgnoreCase("canada"));
+                    fluxSink.complete();
+                })
+                .take(5)
+                .subscribe(Util.subscriber());
+    }
+
+    private static void boundedEmitting(){
+        Flux.create(fluxSink -> {
+                    String country;
+                    do {
+                        country = Util.faker().country().name();
+                        System.out.println("emitting : " + country);
+                        fluxSink.next(country);
+                    } while (!country.equalsIgnoreCase("canada") && !fluxSink.isCancelled());
+                    fluxSink.complete();
+                })
+                .take(5)
+                .subscribe(Util.subscriber());
     }
 }
